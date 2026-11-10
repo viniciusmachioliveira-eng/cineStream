@@ -1,162 +1,274 @@
-body {
-  background: linear-gradient(to right, #bb00ff, #000000);
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+:root {
+  --primary-color: #bb00ff;
+  --primary-hover: #d606ed;
+  --bg-dark: #0a0512;
+  --bg-card: #140d24;
+  --text-main: #ffffff;
+  --text-muted: #b3b3b3;
 }
 
+body {
+  background-color: var(--bg-dark);
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* Menu de Navegação */
 nav {
-  display: grid;
-  grid-template-columns: max-content 1fr; 
-  align-items: center; 
-  background-color: #221f1f; 
-  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(10, 5, 18, 0.85); 
+  backdrop-filter: blur(10px);
+  padding: 20px 60px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(187, 0, 255, 0.1);
 }
 
 .logo {
-  color: purple; 
-  font-weight: bold;
-  font-size: 24px;
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 1px;
+  background: linear-gradient(45deg, #ffffff, var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
   display: flex;
-  justify-content: flex-end; 
-  gap: 25px; 
+  gap: 35px; 
   list-style: none; 
   margin: 0;
   padding: 0;
 }
 
 li {
-  color: #bb00ff;
-  font-size: 16px;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.2s;
 }
 
 li:hover {
-  color: #d606ed;
+  color: var(--primary-color);
+  transform: translateY(-1px);
 }
 
-/* Área de Cadastro */
-.cadastro-container {
-  padding: 20px 40px;
-}
-
-#abrir-formulario {
-  background-color: #bb00ff;
-  color: white;
-  border: none;
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-form {
-  background-color: #221f1f;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 15px;
-  max-width: 300px;
-}
-
-form label {
-  color: white;
-}
-
-/* O Catálogo Principal em Grid de 5 colunas */
-.catalogo {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 25px;
-  padding: 40px;
-  background: linear-gradient(to right, #000000, #bb00ff);
-}
-
-/* Regra aplicada a todas as imagens de filme */
-.Filmes {
-  width: 100%;
-  height: 280px; /* Altura padrão de pôster vertical */
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
-}
-
-/* Efeito de Pulsar / Ir para a Frente */
-.Filmes:hover {
-  animation: irParaFrente 0.4s ease-out forwards;
-}
-
-@keyframes irParaFrente {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  }
-  100% {
-    transform: scale(1.08);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
-  }
-}
-
-/* Banner */
+/* Banner Principal */
 .banner {
   position: relative;
+  height: 70vh;
+  width: 100%;
 }
 
 .banner-img {
   width: 100%;
-  height: 500px;
+  height: 100%;
   object-fit: cover;
-  filter: brightness(40%);
+  filter: brightness(45%);
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to top, var(--bg-dark), transparent);
 }
 
 .banner-content {
   position: absolute;
-  top: 20%;
-  left: 40px;
-  max-width: 500px;
+  bottom: 15%;
+  left: 60px;
+  max-width: 600px;
+  z-index: 10;
+}
+
+.banner-content h1 {
+  font-size: 3rem;
+  margin: 0 0 15px 0;
+  font-weight: 700;
 }
 
 .banner-content p {
-  color: white;
-  font-size: 1.2rem;
-  line-height: 1.4;
-  margin-bottom: 25px;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
 .watch-btn {
-  background-color: #bb00ff;
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 14px 32px;
   font-size: 1rem;
-  border-radius: 4px;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(187, 0, 255, 0.4);
 }
 
-/* Responsividade Mobile (Celular e Tablet) */
+.watch-btn:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+/* Área de Cadastro Refinada */
+.cadastro-container {
+  padding: 40px 60px 10px 60px;
+}
+
+.cadastro-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#abrir-formulario {
+  background-color: rgba(187, 0, 255, 0.1);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: 24px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#abrir-formulario:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: rotate(90deg);
+}
+
+form {
+  background-color: var(--bg-card);
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 20px;
+  max-width: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  
+  /* Estado inicial escondido */
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* Quando ativo, exibe e dispara a animação */
+form.ativo {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: white;
+  box-sizing: border-box;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Catálogo de Filmes */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  padding: 40px 60px;
+}
+
+.Filmes {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+}
+
+.Filmes:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 25px rgba(187, 0, 255, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media screen and (max-width: 1024px) {
+  .catalogo { grid-template-columns: repeat(4, 1fr); padding: 30px; }
+  nav { padding: 20px 30px; }
+  .banner-content { left: 30px; }
+}
+
 @media screen and (max-width: 768px) {
-  .catalogo {
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 15px;
-    padding: 15px;
-  }
-  .Filmes {
-    height: 200px;
-  }
+  .catalogo { grid-template-columns: repeat(3, 1fr); gap: 15px; }
+  .Filmes { height: 240px; }
+  .banner-content h1 { font-size: 2.2rem; }
 }
 
 @media screen and (max-width: 480px) {
-  .catalogo {
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 10px;
-  }
+  .catalogo { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .Filmes { height: 200px; }
+  nav { flex-direction: column; gap: 15px; }
 }
