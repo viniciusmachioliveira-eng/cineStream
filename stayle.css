@@ -167,13 +167,13 @@ form {
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   
-  /* Estado inicial escondido */
+ 
   display: none;
   opacity: 0;
   transform: translateY(-10px);
 }
 
-/* Quando ativo, exibe e dispara a animação */
+
 form.ativo {
   display: block;
   opacity: 1;
@@ -226,7 +226,7 @@ form input:focus {
   background-color: var(--primary-hover);
 }
 
-/* Catálogo de Filmes */
+
 .catalogo {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -254,7 +254,6 @@ form input:focus {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsividade */
 @media screen and (max-width: 1024px) {
   .catalogo { grid-template-columns: repeat(4, 1fr); padding: 30px; }
   nav { padding: 20px 30px; }
